@@ -5,8 +5,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="h-screen flex items-center justify-center">
-      <form className="bg-white flex rounded-lg w-1/2">
-        <div className="flex-1 text-gray-700 p-20">
+      <form className="bg-white flex rounded-lg w-full lg:w-1/2">
+        <div className="flex-1 text-gray-700 p-5 pg:p-20">
           <h1 className="text-3xl pb-2 fo">Dashboard</h1>
           <p>Seleccione la opción</p>
           <div className="mt-6 items-center justify-center">

@@ -5,8 +5,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="h-screen flex items-center justify-center">
-      <form className="bg-white flex rounded-lg w-1/2">
-        <div className="flex-1 text-gray-700 p-20">
+      <form className="bg-white flex rounded-lg lg:w-1/2">
+        <div className="flex-1 text-gray-700 p-5 lg:p-20 ">
           <h1 className="text-3xl pb-2 fo">Vote 0 </h1>
           <p>Please log in</p>
           <div className="mt-6">
@@ -47,7 +47,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="relative flex-1 self-center justify-self-center pr-20">
+        <div className="relative flex-1 self-center justify-self-center p-5 lg:pr-20">
           <Image
             alt="Vote"
             src={formImage}

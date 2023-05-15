@@ -73,8 +73,8 @@ export default function Home() {
 
   return (
     <main className="h-screen flex items-start justify-center">
-      <form className="bg-white flex rounded-lg w-1/2">
-        <div className="flex-1 text-gray-700 p-20">
+      <form className="bg-white flex rounded-lg w-full lg:w-1/2">
+        <div className="flex-1 text-gray-700 p-10 lg:p-20">
           <h1 className="text-3xl pb-2 fo">Adicionar Leads</h1>
           <p>Por favor ingrese datos de lead</p>
           <div className="mt-6">
