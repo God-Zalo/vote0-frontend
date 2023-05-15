@@ -4,32 +4,32 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="h-screen flex items-center justify-center">
-      <form className="bg-white flex rounded-lg lg:w-1/2">
-        <div className="flex-1 text-gray-700 p-5 lg:p-20 ">
-          <h1 className="text-3xl pb-2 fo">Vote 0 </h1>
-          <p>Please log in</p>
+    <main className="flex items-center justify-center">
+      <form className="bg-white flex flex-wrap-reverse rounded-lg sm:3/4 md:w-3/4 lg:w-1/2 w-5/6 xl:w-1/2 2xl:w-1/2 3xl:w-1/2 container mx-auto overflow-auto">
+        <div className="text-gray-700 p-5 md:p-10 lg:p-10 xl:p-20 2xl:p-20 min-w-[200px] mx-auto">
+          <h1 className="text-3xl pb-2 fo">Intención de voto</h1>
+          <p>Por favor inicie sesión</p>
           <div className="mt-6">
             <div className="pb-4">
               <label className="block text-sm pb-2" htmlFor="user">
-                Username
+                Usuario
               </label>
               <input
                 className="border-2 border-gray-500 p-2 rounded-md w-full active:border-teal-500 active:ring-teal-500"
                 type="text"
                 name="user"
-                placeholder="Enter your username"
+                placeholder="Ingrese su usuario"
               ></input>
             </div>
             <div className="pb-4">
               <label className="block text-sm pb-2" htmlFor="password">
-                Password
+                Contraseña
               </label>
               <input
                 className="border-2 border-gray-500 p-2 rounded-md w-full active:border-teal-500 active:ring-teal-500"
                 type="password"
                 name="user"
-                placeholder="Enter your password"
+                placeholder="Ingrese su contraseña"
               ></input>
             </div>
             {/* <button
@@ -43,11 +43,11 @@ export default function Home() {
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm mt-5 px-5 py-2.5 w-full text-center"
               type="button"
             >
-              Login
+              Ingresar
             </Link>
           </div>
         </div>
-        <div className="relative flex-1 self-center justify-self-center p-5 lg:pr-20">
+        <div className="relative container mx-auto p-10 max-w-xs">
           <Image
             alt="Vote"
             src={formImage}

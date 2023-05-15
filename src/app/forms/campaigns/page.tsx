@@ -39,12 +39,12 @@ export default function Campaigns() {
   };
 
   return (
-    <main className="h-screen flex items-center justify-center">
-      <form className="bg-white flex rounded-lg w-full lg:w-1/2">
-        <div className="flex-1 text-gray-700 p-10 lg:p-20">
-          <h1 className="text-3xl pb-2 fo">Adicionar Campaña</h1>
+    <main className="flex items-center justify-center">
+      <form className="bg-white flex rounded-lg lg:w-1/2 md:w-3/4 sm:w-5/6 xl:w-1/2 2xl:w-1/2 container mx-auto overflow-auto">
+        <div className="flex-1 text-gray-700 p-5 sm:p-10 md:p-10 sm:p-5">
+          <h1 className="text-3xl pb-2 fo">Agregar Campaña</h1>
           <p>Por favor ingrese datos de campaña</p>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-col">
             <div className="pb-4">
               <label className="block text-sm pb-2" htmlFor="name">
                 Nombre
@@ -97,7 +97,7 @@ export default function Campaigns() {
 
             <button
               onClick={submitCampaign}
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm mt-5 px-5 py-2.5 w-full text-center"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm mt-5 px-5 py-2.5 w-full text-center container mx-auto max-w-xs"
             >
               Guardar
             </button>
