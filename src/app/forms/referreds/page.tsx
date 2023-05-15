@@ -142,8 +142,8 @@ export default function Home() {
 
   return (
     <main className="flex items-center justify-center">
-      <form className="bg-white flex rounded-lg lg:w-1/2 md:w-3/4 sm:w-5/6 xl:w-1/2 2xl:w-1/2 container mx-auto overflow-auto">
-        <div className="flex-1 text-gray-700 p-5 sm:p-10 md:p-10 sm:p-5">
+      <form className="bg-white flex rounded-lg w-5/6 md:w-3/4 lg:w-1/2 container mx-auto overflow-auto">
+        <div className="flex-1 text-gray-700 p-5 md:p-10">
           <h1 className="text-3xl pb-2 fo">Agregar Referido</h1>
           <p>Por favor ingrese datos de referido</p>
           <div className="mt-6 flex flex-col">

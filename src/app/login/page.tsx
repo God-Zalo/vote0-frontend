@@ -5,8 +5,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="flex items-center justify-center">
-      <form className="bg-white flex flex-wrap-reverse rounded-lg sm:3/4 md:w-3/4 lg:w-1/2 w-5/6 xl:w-1/2 2xl:w-1/2 3xl:w-1/2 container mx-auto overflow-auto">
-        <div className="text-gray-700 p-5 md:p-10 lg:p-10 xl:p-20 2xl:p-20 min-w-[200px] mx-auto">
+      <form className="bg-white flex flex-wrap-reverse rounded-lg w-5/6 sm:w-3/4 md:w-3/4 container mx-auto overflow-auto">
+        <div className="text-gray-700 p-5 md:p-10 lg:p-10 w-11/12 md:w-fill md:max-w-md mx-auto">
           <h1 className="text-3xl pb-2 fo">Intención de voto</h1>
           <p>Por favor inicie sesión</p>
           <div className="mt-6">

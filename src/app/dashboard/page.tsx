@@ -5,8 +5,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="flex items-center flex object-center">
-      <form className="bg-white flex rounded-lg lg:w-1/2 md:w-3/4 sm:w-5/6 xl:w-1/2 2xl:w-1/2 container mx-auto overflow-auto">
-        <div className="flex-1 text-gray-700 p-5 sm:p-10 md:p-10 sm:p-5">
+      <form className="bg-white flex rounded-lg w-5/6 md:w-3/4 lg:w-1/2 container mx-auto overflow-auto">
+        <div className="flex-1 text-gray-700 p-5 md:p-10">
           <h1 className="text-3xl pb-2 fo">Menú principal</h1>
           <p>Seleccione la opción</p>
           <div className="mt-6 items-center flex flex-col">
