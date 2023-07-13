@@ -22,13 +22,15 @@ export default function Alcaldes() {
   
   const handleOptionChange = (option: any) => {
     setSelectedOption(option);
+    setSearchTerm("");
+    setAlcaldesInfo(data);
+    setErrorPage(false)
   };
 
   const handleSearch = (event: any) => {
     setErrorPage(false);
     setAlcaldesInfo(data);
     setSearchTerm(event.target.value.toLowerCase());
-    
     let searchHolder:any;
     if(event.target.value.length){
       if(selectedOption.value === 'municipio'){
