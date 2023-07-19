@@ -6,6 +6,7 @@ export default function AlcaldeTable (props: any) {
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    console.log(props.alcaldesInfo)
     const currentItems = props.alcaldesInfo.slice(indexOfFirstItem, indexOfLastItem);
 
     const handlePageChange = (pageNumber: number) => {
@@ -59,7 +60,7 @@ export default function AlcaldeTable (props: any) {
                 ))}
             </tbody>
             </table>
-            <div className="flex justify-center mt-4 pb-4">
+            <div className="flex mt-4 pb-4">
             <nav className="flex items-center">
                 {Array.from({ length: Math.ceil(props.alcaldesInfo.length / itemsPerPage) }, (_, index) => (
                 <button
