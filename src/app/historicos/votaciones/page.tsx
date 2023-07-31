@@ -17,7 +17,8 @@ export default function Alcaldes() {
   const tableHeaders = ['Año', 'Municipio', 'Código', 'Candidato', 'Partido', 'Coaliacion', 'Votos', 'Genero', 'Current'];
 
   useEffect(() => {
-    fetch("http://3.142.215.11:8000/api/historic/alcalde/dashboard/")
+    const DJANGO_API = process.env.NEXT_PUBLIC_DJANGO_API_DEV
+    fetch( `${DJANGO_API}/historic/alcaldes/2019`)
       .then((res) => res.json())
       .then((data) => {
         setAlcaldesHolder(data);

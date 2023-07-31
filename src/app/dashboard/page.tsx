@@ -40,7 +40,21 @@ export default function Home() {
               className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm mt-5 px-5 py-2.5 w-full text-center"
               type="button"
             >
-              Ver datos
+              Historicos 2019
+            </Link>
+            <Link
+              href={"/historicos/votaciones"}
+              className="block text-white bg-blue-300 hover:bg-blue-400 focus:ring-4 focus:ring-blue-100 font-medium rounded-lg text-sm mt-5 px-5 py-2.5 w-3/4 max-w-xs text-center self-center container mx-auto"
+              type="button"
+            >
+              Resultados Votaciones 2019
+            </Link>
+            <Link
+              href={"/historicos/divipola"}
+              className="block text-white bg-blue-300 hover:bg-blue-400 focus:ring-4 focus:ring-blue-100 font-medium rounded-lg text-sm mt-5 px-5 py-2.5 w-3/4 max-w-xs text-center self-center container mx-auto"
+              type="button"
+            >
+              Divipola 2019
             </Link>
             <Link
               href={"/dashboard"}
