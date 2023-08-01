@@ -1,13 +1,13 @@
 import { useState } from 'react';
-export default function AlcaldeTable (props: any) {
+export default function AsambleaTable (props: any) {
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 7;
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    console.log(props.alcaldesInfo)
-    const currentItems = props.alcaldesInfo.slice(indexOfFirstItem, indexOfLastItem);
+    console.log(props.asambleaInfo)
+    const currentItems = props.asambleaInfo.slice(indexOfFirstItem, indexOfLastItem);
 
     const handlePageChange = (pageNumber: number) => {
         setCurrentPage(pageNumber);
@@ -27,37 +27,31 @@ export default function AlcaldeTable (props: any) {
                 </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-                {currentItems.map((alcalde: any, index: any) => (
+                {currentItems.map((Asamblea: any, index: any) => (
                 <tr key={index}>
                     <td className="px-2 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{alcalde.year}</div>
+                    <div className="text-sm text-gray-900">{Asamblea.year}</div>
                     </td>
                     <td className="px-2 py-4">
-                    <div className="text-sm text-gray-900">{alcalde.municipio}</div>
+                    <div className="text-sm text-gray-900">{Asamblea.municipio}</div>
                     </td>
                     <td className="px-2 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{alcalde.codigo}</div>
+                    <div className="text-sm text-gray-900">{Asamblea.codigo}</div>
                     </td>
                     <td className="px-2 py-4 ">
-                    <div className="text-sm text-gray-900">{alcalde.cand_part}</div>
+                    <div className="text-sm text-gray-900">{Asamblea.candidato}</div>
                     </td>
                     <td className="px-2 py-4 ">
-                    <div className="text-sm text-gray-900">{alcalde.candidato}</div>
-                    </td>
-                    <td className="px-2 py-4 ">
-                    <div className="text-sm text-gray-900">{alcalde.partido}</div>
+                    <div className="text-sm text-gray-900">{Asamblea.partido}</div>
                     </td>
                     <td className="px-2 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{alcalde.coalicion ? 'Sí' : 'No'}</div>
+                    <div className="text-sm text-gray-900">{Asamblea.coalicion ? 'Sí' : 'No'}</div>
                     </td>
                     <td className="px-2 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{alcalde.votos}</div>
+                    <div className="text-sm text-gray-900">{Asamblea.votos}</div>
                     </td>
                     <td className="px-2 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{alcalde.genero}</div>
-                    </td>
-                    <td className="px-2 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{alcalde.ganador ? 'Sí' : 'No'}</div>
+                    <div className="text-sm text-gray-900">{Asamblea.genero}</div>
                     </td>
                 </tr>
                 ))}
@@ -65,7 +59,7 @@ export default function AlcaldeTable (props: any) {
             </table>
             <div className="flex mt-4 pb-4">
             <nav className="flex items-center">
-                {Array.from({ length: Math.ceil(props.alcaldesInfo.length / itemsPerPage) }, (_, index) => (
+                {Array.from({ length: Math.ceil(props.asambleaInfo.length / itemsPerPage) }, (_, index) => (
                 <button
                     key={index + 1}
                     onClick={() => handlePageChange(index + 1)}

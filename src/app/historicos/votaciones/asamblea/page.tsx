@@ -3,7 +3,6 @@
 import Link from "next/link";
 import AlcaldeTable from "@/app/shared/alcaldeTable";
 import ErrorPage from "@/app/shared/error";
-import data from "../../../../public/data/alcaldes.json"
 import { useState, useEffect } from 'react';
 
 
@@ -14,11 +13,11 @@ export default function Alcaldes() {
     { value: 'codigo', label: 'Buscar por Código' },
     { value: 'candidato', label: 'Buscar por  Candidato' },
   ];
-  const tableHeaders = ['Año', 'Municipio', 'Código', 'Candidato', 'Partido', 'Coaliacion', 'Votos', 'Genero', 'Current'];
+  const tableHeaders = ['Año', 'Municipio', 'Código', 'Tipo', 'Candidato', 'Partido', 'Coaliacion', 'Votos', 'Genero', 'Ganador'];
 
   useEffect(() => {
     const DJANGO_API = process.env.NEXT_PUBLIC_DJANGO_API_DEV
-    fetch( `${DJANGO_API}/historic/alcaldes/2019`)
+    fetch( `${DJANGO_API}/historic/asamblea/2019`)
       .then((res) => res.json())
       .then((data) => {
         setAlcaldesHolder(data);
