@@ -1,7 +1,10 @@
 "use client"
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+
+
+const DJANGO_API = process.env.NEXT_PUBLIC_DJANGO_API_DEV
+const DJANGO_IMAGES_API = process.env.NEXT_PUBLIC_DJANGO_IMAGES_API_DEV
 
 interface Content {
   // Define the structure of your content here
@@ -13,16 +16,16 @@ interface Content {
     hero_banner3: string;
     hero_banner4: string;
     resumen: string;
-}
+  }
 
-export default function Candidato() {
+export default function Candidato( { params }: { params: { candidato: string } }) {
 
   const [content, setContent] = useState<Content | null>(null);
 
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/candidate/yovotopepito');
+        const response = await fetch(`${DJANGO_API}/candidate/${params.candidato}`);
         const data: Content = await response.json();
         setContent(data);
         console.log(data);
@@ -34,10 +37,6 @@ export default function Candidato() {
     fetchContent();
   }, []);
 
-  const searchParams = useSearchParams();
-  const nombre = searchParams.get('nombre')
-  console.log(nombre)
-
   const [formData, setFormData] = useState({
     email: "",
     citizen_id: "",
@@ -45,7 +44,7 @@ export default function Candidato() {
     last_name: "",
     phone: "",
     role: 'voluntario',
-    candidato: nombre,
+    candidate: params.candidato,
   });
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +60,7 @@ export default function Candidato() {
     console.log(formData)
 
     try {
-      const response = await fetch("/candidate/info", {
+      const response = await fetch(`${DJANGO_API}/volunteer/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -88,12 +87,31 @@ export default function Candidato() {
         <div>
           {/* Access and display the fetched content */}
           <h1>{content.id}</h1>
+          <h1>{params.candidato}</h1>
           <p>{content.display_name}</p>
-          <Image alt="asd" src={"http://127.0.0.1:8000/"+content.hero_banner1} width={100} height={100}></Image>
+          <Image alt="asd" src={`${DJANGO_IMAGES_API}`+content.hero_banner1} width={100} height={100}></Image>
         </div>
       )}
       <div className="mt-8">
         <form onSubmit={handleSubmit} className="max-w-sm mx-auto bg-blue-50 p-6 rounded-lg shadow-md">
+          <input
+            type="text"
+            name="first_name"
+            placeholder="Nombre"
+            value={formData.first_name}
+            onChange={handleInputChange}
+            required
+            className="w-full p-2 border border-blue-300 rounded-md mb-4 focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
+          />
+          <input
+            type="text"
+            name="last_name"
+            placeholder="Apellido"
+            value={formData.last_name}
+            onChange={handleInputChange}
+            required
+            className="w-full p-2 border border-blue-300 rounded-md mb-4 focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
+          />
           <input
             type="email"
             name="email"
@@ -114,44 +132,11 @@ export default function Candidato() {
           />
           <input
             type="text"
-            name="first_name"
-            placeholder="Primer Nombre"
-            value={formData.first_name}
-            onChange={handleInputChange}
-            required
-            className="w-full p-2 border border-blue-300 rounded-md mb-4 focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
-          />
-          <input
-            type="text"
-            name="last_name"
-            placeholder="Apellido"
-            value={formData.last_name}
-            onChange={handleInputChange}
-            required
-            className="w-full p-2 border border-blue-300 rounded-md mb-4 focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
-          />
-          <input
-            type="text"
             name="phone"
             placeholder="Número telefónico"
             value={formData.phone}
             onChange={handleInputChange}
             required
-            className="w-full p-2 border border-blue-300 rounded-md mb-4 focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
-          />
-          <select
-            name="role"
-            value="voluntario"
-            disabled
-            className="w-full p-2 border border-blue-300 rounded-md mb-4 focus:ring focus:ring-blue-200 focus:border-blue-400 bg-gray-100 text-black"
-          >
-            <option value="voluntario">Voluntario</option>
-          </select>
-          <input
-            type="text"
-            name="candidato"
-            placeholder={nombre || ''}
-            onChange={handleInputChange}
             className="w-full p-2 border border-blue-300 rounded-md mb-4 focus:ring focus:ring-blue-200 focus:border-blue-400 text-black"
           />
           <button
