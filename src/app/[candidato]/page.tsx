@@ -1,10 +1,14 @@
 "use client"
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 
 const DJANGO_API = process.env.NEXT_PUBLIC_DJANGO_API_DEV
 const DJANGO_IMAGES_API = process.env.NEXT_PUBLIC_DJANGO_IMAGES_API_DEV
+
+const MySwal = withReactContent(Swal)
 
 interface Content {
   // Define the structure of your content here
@@ -69,14 +73,34 @@ export default function Candidato( { params }: { params: { candidato: string } }
       });
 
       if (response.ok) {
-        // Aquí podemos redirigir cuando se complete el request, o mostramos un aprobado y limpiamos el form
-        
-      } else {
-        // Lo contrario a lo de arriba kkkk
-        console.error("Error al enviar el formulario");
+        MySwal.fire({
+          title: 'Realizado!',
+          text: 'Formulario enviado exitosamente',
+          icon: 'success',
+          timerProgressBar: true,
+          timer: 2000,
+        }).then(() => {
+          /* Read more about handling dismissals below */
+          // TODO: Limpiar Formulario XD
+          
+      })} else {
+        MySwal.fire({
+          title: 'Error!',
+          text: 'Error al enviar el formulario',
+          icon: 'error',
+          timerProgressBar: true,
+          timer: 2000,
+        })
       }
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
+      MySwal.fire({
+        title: 'Error!',
+        text: 'Error al enviar el formulario',
+        icon: 'error',
+        timerProgressBar: true,
+        timer: 2000,
+      })
     }
   };
 
