@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import My_404Page from '@/app/shared/404';
 
 
 const DJANGO_API = process.env.NEXT_PUBLIC_DJANGO_API_DEV
@@ -25,6 +26,7 @@ interface Content {
 export default function Candidato( { params }: { params: { candidato: string } }) {
 
   const [content, setContent] = useState<Content | null>(null);
+  const [my_404Page, setMy_404Page] = useState(false)
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -33,8 +35,11 @@ export default function Candidato( { params }: { params: { candidato: string } }
         const data: Content = await response.json();
         setContent(data);
         console.log(data);
+        setMy_404Page(false);
+
       } catch (error) {
         console.error(error);
+        setMy_404Page(true);
       }
     };
 
@@ -107,7 +112,7 @@ export default function Candidato( { params }: { params: { candidato: string } }
   return (
     <div>
       {/* Render your component content here */}
-      {content && (
+      {my_404Page ? <My_404Page/> : ( content && (
         <div>
           {/* Access and display the fetched content */}
           <h1>{content.id}</h1>
@@ -115,7 +120,7 @@ export default function Candidato( { params }: { params: { candidato: string } }
           <p>{content.display_name}</p>
           <Image alt="asd" src={`${DJANGO_IMAGES_API}`+content.hero_banner1} width={100} height={100}></Image>
         </div>
-      )}
+      ))}
       <div className="mt-8">
         <form onSubmit={handleSubmit} className="max-w-sm mx-auto bg-blue-50 p-6 rounded-lg shadow-md">
           <input
